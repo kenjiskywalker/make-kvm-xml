@@ -1,0 +1,41 @@
+<domain type='kvm'>
+  <name>[% NAME %]</name>
+  <uuid>[% UUID %]</uuid>
+  <memory>[% MEM %]</memory>
+  <currentMemory>[% MEM %]</currentMemory>
+  <vcpu>[% CPU %]</vcpu>
+  <os>
+    <type arch='x86_64' machine='rhel5.4.0'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <pae/>
+  </features>
+  <clock offset='utc'>
+    <timer name='pit' tickpolicy='delay'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>
+    <emulator>/usr/libexec/qemu-kvm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='raw' cache='none'/>
+      <source file='[% IMAGE %]'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <interface type='bridge'>
+      <mac address='[% MAC %]'/>
+      <source bridge='[% VLAN %]'/>
+      <model type='virtio'/>
+    </interface>
+    <serial type='pty'>
+      <target port='0'/>
+    </serial>
+    <console type='pty'>
+      <target port='0'/>
+    </console>
+  </devices>
+</domain>

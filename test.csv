@@ -1,0 +1,37 @@
+#
+# edit this csv file.
+# make xml file for kvm with reference to this csv file.
+# 
+# --------------------------------------------------------------------------------
+#
+# The meaning of each item
+#
+# 1 = hostname,
+# 2 = cpu,
+# 3 = memory,
+# 4 = kvm image file,
+# 5 = netwrok interface
+# 6 = mac address
+#
+# [example]
+#
+# web-server01,2,8,/var/lib/libvirt/images/web-server01.img,eth2,00:00:00:00:00:00
+#
+# hostname = web-server01
+# cpu = 2
+# memory = 8192
+# kvm image file = /var/lib/libvirt/images/web-server01.img
+# network interface = eth2
+# mac address = 00:00:00:00:00:00
+#
+# --------------------------------------------------------------------------------
+# 
+# enjoy make kvm host xml
+#
+# $ perl make-kvm-xml.pl
+#
+# :) 
+#
+
+server01,1,2,./make-kvm-xml-server01.img,eth2,00:00:00:00:00:00
+server02,1,2,./make-kvm-xml-server02.img,eth2,00:00:00:00:00:00
